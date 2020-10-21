@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title th:text="${topic.name}">Document</title>
+    <title th:text="${hashtags}">Document</title>
 
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/layout.css"/>
@@ -21,12 +21,12 @@
     </header>
     <main class="main-content">
         <section class="main-content__topic topic">
-            <h2 th:text="${topic.name}" class="topic__title main-content__title">
+            <h2 th:text="${hashtags}" class="topic__title main-content__title">
                 Topic
             </h2>
             <nav class="main-content__nav posts__nav">
-                <div th:each="post: ${topic.posts}">
-                    <a th:text="${post.title}" th:href="'/posts/'+${post.id}" href="#"
+                <div th:each="hashtag: ${hashtags}">
+                    <a th:text="${hashtags}" th:href="'/hashtags/'+${hashtags}" href="#"
                        class="posts__nav-link"></a>
                 </div>
             </nav>

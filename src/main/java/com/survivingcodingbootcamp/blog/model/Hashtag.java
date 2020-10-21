@@ -19,8 +19,7 @@ public class Hashtag {
 
     protected Hashtag (){}
 
-    public Hashtag(Long id, String name) {
-        this.id = id;
+    public Hashtag(String name) {
         this.name = name;
     }
 

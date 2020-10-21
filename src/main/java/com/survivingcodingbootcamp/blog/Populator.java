@@ -1,7 +1,9 @@
 package com.survivingcodingbootcamp.blog;
 
+import com.survivingcodingbootcamp.blog.model.Hashtag;
 import com.survivingcodingbootcamp.blog.model.Post;
 import com.survivingcodingbootcamp.blog.model.Topic;
+import com.survivingcodingbootcamp.blog.storage.HashtagStorage;
 import com.survivingcodingbootcamp.blog.storage.PostStorage;
 import com.survivingcodingbootcamp.blog.storage.TopicStorage;
 import org.springframework.boot.CommandLineRunner;
@@ -10,12 +12,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Populator implements CommandLineRunner {
 
+    private HashtagStorage hashtagStorage;
     private TopicStorage topicStorage;
     private PostStorage postStorage;
 
 
-    public Populator(TopicStorage topicStorage, PostStorage postStorage) {
+    public Populator(TopicStorage topicStorage, PostStorage postStorage, HashtagStorage hashtagStorage) {
 
+        this.hashtagStorage = hashtagStorage;
         this.topicStorage = topicStorage;
         this.postStorage = postStorage;
     }
@@ -53,6 +57,9 @@ public class Populator implements CommandLineRunner {
         topicStorage.save(topic3);
         Topic topic4 = new Topic("Object Oriented Programming and You");
         topicStorage.save(topic4);
+
+        Hashtag hashtag1 = new Hashtag("#treacherous");
+        hashtagStorage.save(hashtag1);
 
     }
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${post.title}">Document</title>
+    <title th:text="${hashtag}">Document</title>
     <link rel="icon" href="/assets/icon.png">
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/layout.css" />
@@ -21,10 +21,10 @@
     </header>
     <main class="main-content">
         <section class="main-content__post post">
-            <h3 class="post__topic-title main-content__topic-title"><a th:text="${post.topic.name}" th:href="'/topics/'+${post.topic.id}" class="main-content__topic-link post__topic-link">Topic</a>
+            <h3 class="post__topic-title main-content__topic-title"><a th:text="${hashtag.name}" th:href="'/hashtag/'+${hashtag.name}" class="main-content__topic-link post__topic-link">Topic</a>
             </h3>
-            <h2 th:text="${post.title}" class="post__title main-content__topic-title">Post Title</h2>
-            <p th:text="${post.content}" class="post__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque blanditiis, aut quae fuga id quis ut.
+            <h2 th:text="${hashtag.name}" class="post__title main-content__topic-title">Post Title</h2>
+            <p th:text="${hashtag.posts}" class="post__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque blanditiis, aut quae fuga id quis ut.
                 Eligendi necessitatibus blanditiis officia, odio deleniti natus molestiae fugiat ex quod vel aliquam illum.
             </p>
         </section>
