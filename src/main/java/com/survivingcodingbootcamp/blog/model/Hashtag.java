@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Hashtag {
@@ -19,8 +20,9 @@ public class Hashtag {
 
     protected Hashtag (){}
 
-    public Hashtag(String name) {
+    public Hashtag(String name, Post...posts) {
         this.name = name;
+        this.posts = List.of(posts);
     }
 
     public Long getId() {
@@ -50,14 +52,14 @@ public class Hashtag {
 
         Hashtag hashtag = (Hashtag) o;
 
-        if (!id.equals(hashtag.id)) return false;
-        return name.equals(hashtag.name);
+        if (id != null ? !id.equals(hashtag.id) : hashtag.id != null) return false;
+        return name != null ? name.equals(hashtag.name) : hashtag.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 }

@@ -9,6 +9,8 @@ import com.survivingcodingbootcamp.blog.storage.TopicStorage;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+
 @Component
 public class Populator implements CommandLineRunner {
 
@@ -58,8 +60,10 @@ public class Populator implements CommandLineRunner {
         Topic topic4 = new Topic("Object Oriented Programming and You");
         topicStorage.save(topic4);
 
-        Hashtag hashtag1 = new Hashtag("#treacherous");
+        Hashtag hashtag1 = new Hashtag("#treacherous", post1, post2);
         hashtagStorage.save(hashtag1);
+        Hashtag hashtag2 = new Hashtag("#fast-paced", post1, post2);
+        hashtagStorage.save(hashtag2);
 
     }
 
