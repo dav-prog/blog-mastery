@@ -23,4 +23,9 @@ public class HashtagStorageJpaImpl implements HashtagStorage {
     @Override
     public void save(Hashtag hashtagToAdd) {hashtagRepo.save(hashtagToAdd); }
 
+    @Override
+    public Hashtag retrieveHashtagByName(String name){
+        return hashtagRepo.findByName(name);
+    }
+
 }

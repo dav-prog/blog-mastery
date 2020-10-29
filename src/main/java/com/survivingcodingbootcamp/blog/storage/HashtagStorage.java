@@ -8,4 +8,6 @@ public interface HashtagStorage {
     Hashtag retrieveHashtagById(Long id);
 
     void save(Hashtag hashtagToAdd);
+
+    Hashtag retrieveHashtagByName(String name);
 }

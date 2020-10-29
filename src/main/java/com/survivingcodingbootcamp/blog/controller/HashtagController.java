@@ -1,7 +1,9 @@
 package com.survivingcodingbootcamp.blog.controller;
 
 import com.survivingcodingbootcamp.blog.model.Hashtag;
+import com.survivingcodingbootcamp.blog.model.Post;
 import com.survivingcodingbootcamp.blog.storage.HashtagStorage;
+import com.survivingcodingbootcamp.blog.storage.PostStorage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +16,11 @@ public class HashtagController {
 
     private HashtagStorage hashtagStorage;
 
-    public HashtagController(HashtagStorage hashtagStorage) {
+    private PostStorage postStorage;
+
+    public HashtagController(HashtagStorage hashtagStorage, PostStorage postStorage) {
         this.hashtagStorage = hashtagStorage;
+        this.postStorage = postStorage;
     }
 
 
@@ -32,14 +37,19 @@ public class HashtagController {
 
         return "all-hashtag-template";
     }
-    @PostMapping("/post")
-    public String addHashtag(@RequestParam String name){
-        Hashtag hashtagToAdd = new Hashtag(name);
+    @PostMapping("/hashtag/{postId}")
+    public String addHashtag(String name, @PathVariable Long postId){
+        Hashtag hashtagToAdd = new Hashtag(name, postStorage.retrievePostById(postId));
         hashtagStorage.save(hashtagToAdd);
+        Post post = postStorage.retrievePostById(postId);
+        post.addHashtag(hashtagToAdd);
+        postStorage.save(post);
 
-        return "redirect:/post";
+        return "redirect:/posts/" + postId;
     }
 
 
-
+//    public String addHashtag(String name, Long id) {
+//        return "redirect:/posts/" + id;
+//    }
 }

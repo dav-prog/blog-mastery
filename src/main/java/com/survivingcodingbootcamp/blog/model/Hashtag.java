@@ -62,4 +62,8 @@ public class Hashtag {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
+
+    public void addPost (Post postToAdd) {
+        posts.add(postToAdd);
+    }
 }

@@ -31,6 +31,17 @@
                 </div>
             </nav>
         </section>
+
+            <form class="new-post-form" action="/posts/" method="POST">
+            <input type="text" name="title">
+            <input type="hidden" name="topicId" th:value="${topic.id}">
+            <input type="text" name="content">
+            <input type="text" name="author">
+            <button type="submit">Create New Post</button>
+            </form>
+
+
+
     </main>
 </div>
 </body>
